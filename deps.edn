@@ -1,0 +1,10 @@
+{:paths ["src"]
+ :deps {org.clojure/clojure {:mvn/version "1.10.0-alpha8"}
+        metosin/compojure-api {:mvn/version "2.0.0-alpha26"}
+        ring/ring {:mvn/version "1.7.0"}
+
+        joda-time/joda-time {:mvn/version "2.7"}
+        clojure-complete {:mvn/version "0.2.4"}
+        commons-codec {:mvn/version "1.10"}
+        }
+ :aliases {:dev {:main-opts ["-m" "compojure-tools-deps.core"]}}}
