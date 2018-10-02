@@ -77,3 +77,22 @@ up with 2.9.9. The leiningen project has `commons-codec` 1.10, where this one
 ends up with 1.11. Finally, the leiningen project has `clojure-complete`, which
 this one does not have. Manually adding these dependencies does not affect the
 outcome, it still produces the error above.
+
+# Update: Workaround
+
+As per [this
+comment](https://github.com/metosin/compojure-api/issues/393#issuecomment-426157111),
+the problem is
+[this bug in frankiesardo/linked](https://github.com/frankiesardo/linked/issues/8).
+Until an update is published, this bug can be worked around by excluding this
+dependency and including `ikitommi/linked`:
+
+```clj
+{:paths ["src"]
+ :deps {org.clojure/clojure {:mvn/version "1.10.0-alpha8"}
+        metosin/compojure-api {:mvn/version "2.0.0-alpha26"
+                               :exclusions [frankiesardo/linked]}
+        ring/ring {:mvn/version "1.7.0"}
+        ikitommi/linked {:mvn/version "1.3.1-alpha1"}}
+ :aliases {:dev {:main-opts ["-m" "compojure-tools-deps.core"]}}}
+```
